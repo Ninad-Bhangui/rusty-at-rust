@@ -2,5 +2,5 @@
 Trying to learn rust using the documentation. These are notes created in the process of learning.
 
 ## Appendix
-- [Hello World](./official-doc-stuff/0_hello_world/)
-- [Guessing Game](./official-doc-stuff/1_guessing_game/)
+1. [Hello World](./official-doc-stuff/0_hello_world/)
+2. [Guessing Game](./official-doc-stuff/1_guessing_game/)
