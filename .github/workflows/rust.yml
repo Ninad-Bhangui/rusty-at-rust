@@ -8,6 +8,7 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
+  working-directory: ./official-doc-stuff/hello_world/ 
 
 jobs:
   build:
@@ -17,8 +18,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build
-      working-directory: ./official-doc-stuff/hello_world/
+      working-directory: ${{env.working-directory}}
       run: cargo build --verbose
     - name: Run tests
-      working-directory: ./official-doc-stuff/hello_world/
+      working-directory: ${{env.working-directory}}
       run: cargo test --verbose
