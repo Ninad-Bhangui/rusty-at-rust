@@ -10,13 +10,16 @@ I'm linking parts of the documentation which this particular code was created to
 ### Installation (Linux)
 
 Install the latest stable version of Rust using rustup
-  `$ curl --proto '=https' --tlsv1.2 <https://sh.rustup.rs> -sSf | sh
+
+  ```bash
+  curl --proto '=https' --tlsv1.2 <https://sh.rustup.rs> -sSf | sh
+  ```
   
 Dillinger uses a number of open source projects to work properly:
 
 ### Basic Code
 
-```
+```rust
 fn main() {
     println!("Hello, world!");
 }
@@ -24,7 +27,7 @@ fn main() {
 
 To run,
 
-```
+```rust
 $ rustc main.rs
 $ ./main
 Hello, world!
@@ -51,7 +54,7 @@ Following happens:
 
 - `Cargo.toml` file created. (Like package.json)
 
-```
+```toml
 [package]
 name = "hello_worldc"
 version = "0.1.0"
@@ -70,6 +73,6 @@ Inside project folder:
 - `cargo build` - Compiles and creates executable
 - `cargo run` - Compiles if not compiled before by build and runs the resulting executable. Running this again without any changes to the code will skip the build process
 - `cargo check` - Checks code to make sure it compiles without creating executable. (Faster than build as it does not go through process of creating executable. Most people use check periodically and build when they're ready to use executable)
-
+- `cargo update` - Self explanatory
 Above steps create executable in folder `target/debug`.
 When ready for release, run `cargo build --release` which will create executable in folder `target/release`.
