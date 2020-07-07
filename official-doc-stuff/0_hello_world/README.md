@@ -1,11 +1,5 @@
 # Hello World
 
-Dillinger is a cloud-enabled, mobile-ready, offline-storage, AngularJS powered HTML5 Markdown editor.
-
-- Type some Markdown on the left
-- See HTML in the right
-- Magic
-
 ## Links from docs covered here
 
 I'm linking parts of the documentation which this particular code was created to understand.
