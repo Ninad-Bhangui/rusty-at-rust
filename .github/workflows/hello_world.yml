@@ -8,7 +8,7 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
-  working-directory: ./official-doc-stuff/hello_world/ 
+  working-directory: ./official-doc-stuff/0_hello_world/ 
 
 jobs:
   build:

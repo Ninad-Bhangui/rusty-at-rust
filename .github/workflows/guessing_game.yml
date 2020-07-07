@@ -8,7 +8,7 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
-  working-directory: ./official-doc-stuff/guessing_game/ 
+  working-directory: ./official-doc-stuff/1_guessing_game/ 
 
 jobs:
   build:
