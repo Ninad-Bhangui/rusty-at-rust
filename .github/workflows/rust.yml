@@ -17,6 +17,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build
+      working-directory: ./official-doc-stuff/hello_world/
       run: cargo build --verbose
     - name: Run tests
+      working-directory: ./official-doc-stuff/hello_world/
       run: cargo test --verbose
