@@ -82,3 +82,41 @@ let guess: u32 = "42".parse().expect("Not a number!");
 ```
 
 - Has Two types: Scalar and Compound
+
+#### Scalar Types
+
+##### Integer
+
+- Number without a fractional component
+- Either signed on unsigned.
+- Signed Range : -(2<sup>n</sup> - 1) to 2<sup>n-1</sup> - 1
+- Unsigned Range : 0 to 2<sup>n</sup> - 1
+   n -> number of bits. For example in `u8` n=8 and is unsigned.
+   So Range : 0 - 255
+
+```rust
+    let mut overflow: u8 = 255;
+    overflow = overflow + 1;
+    println!("The value of overflow is: {}", overflow);
+```
+
+Above code will panic on `cargo run` but on `cargo run --release`, will perform two's complement wrapping and value would be 0.
+
+##### Floating-point
+
+- Types are `f32` ([single precision](https://en.wikipedia.org/wiki/Single-precision_floating-point_format)) and `f64` ([double precision](https://en.wikipedia.org/wiki/Single-precision_floating-point_format))
+
+#### Arithematic operations
+
+- Unlike python where you can add an innteger and floating point directly, this throws an [error](https://stackoverflow.com/questions/39677410/why-do-i-get-an-error-when-adding-an-integer-to-a-floating-point) in rust.
+
+- To do so, either type will have to be converted
+
+```rust
+let mismatch_sum = f64::from(5) + 34.0; //convert int to float
+let mismatch_sum = 5 as f64 + 34.0; //Another way to do the same
+
+
+let mismatch_sum = 5 + 34.0 as i32; //Convert float to int.
+let mismatch_sum = f64::from(5) + 34.0; //Does not work. No implementation for `{integer} + {float}`
+```
