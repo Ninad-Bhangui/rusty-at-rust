@@ -1,4 +1,4 @@
-# Variables
+# Variables/DataTypes
 
 ## Links from docs covered here
 
