@@ -127,3 +127,16 @@ In short,
 
 - `from` is only implemented for lossless conversions. You can convert from `i32` to `i64` but not other way around.
 - `as` works for both lossy and lossless.
+
+#### Boolean Type
+
+- `true`/`false`
+
+#### Character Type
+
+- 4 bytes in size
+- `char` literals in single quotes and string literals double quotes
+
+### Compound Types
+
+### Tuple
