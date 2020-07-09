@@ -120,3 +120,10 @@ let mismatch_sum = 5 as f64 + 34.0; //Another way to do the same
 let mismatch_sum = 5 + 34.0 as i32; //Convert float to int.
 let mismatch_sum = f64::from(5) + 34.0; //Does not work. No implementation for `{integer} + {float}`
 ```
+
+Difference between [from](https://doc.rust-lang.org/std/convert/trait.From.html) and [as](https://doc.rust-lang.org/reference/expressions/operator-expr.html#type-cast-expressions) expalined [here](https://stackoverflow.com/questions/48795329/what-is-the-difference-between-fromfrom-and-as-in-rust).
+
+In short,
+
+- `from` is only implemented for lossless conversions. You can convert from `i32` to `i64` but not other way around.
+- `as` works for both lossy and lossless.
