@@ -42,5 +42,18 @@ fn main() {
     // let mismatch_sum = 5 as f64 + 34.0;
     //Or float to integer
     // let mismatch_sum = 5 + 34.0 as i32;
-    println!("Mismatched sum is : {}", mismatch_sum);
+    // println!("Mismatched sum is : {}", mismatch_sum);
+
+    //Tuple
+    let g = (500, 6.4, 1);
+    let g: (i32, f64, u8) = (500, 6.4, 1);
+    let e = g.2;
+
+    //Array
+    let a = [1, 2, 3, 4, 5];
+    let index = 10;
+
+    let element = a[index];
+
+    println!("The value of element is: {}", element);
 }

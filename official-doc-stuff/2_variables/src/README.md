@@ -140,3 +140,40 @@ In short,
 ### Compound Types
 
 ### Tuple
+
+- group of values of *different* types
+- fixed length.
+- `(30,1,20)`
+
+```rust
+tup = (30,1,20)
+let x: (i32, f64, u8) = (500, 6.4, 1);
+(x,y,z) = tup;
+println!("y is {}",y); // 1
+println!("Third element is {}",tup.2); //Access
+```
+
+### Array
+
+- Group of values of *same* type
+- Fixed length (Differnt from most languages in this)
+- Data is on stack not heap. (Vectors are on heap with variable length)
+
+```rust
+let a = [1, 2, 3, 4, 5];
+let a: [i32; 5] = [1, 2, 3, 4, 5];
+
+let a = [3; 5]; // [3,3,3,3,3];
+
+let first = a[0];
+let second = a[1];
+```
+
+- Accessing invalid index runs but panics with *runtime* error and exits
+
+```rust
+thread 'main' panicked at 'index out of bounds: the len is 5 but the index is 10', src/main.rs:5:19
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace.
+```
+
+- In many low-level languages, this kind of check is not done, and when you provide an incorrect index, invalid memory can be accessed.
