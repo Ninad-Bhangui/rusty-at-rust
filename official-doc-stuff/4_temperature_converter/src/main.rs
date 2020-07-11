@@ -43,6 +43,7 @@ fn convert(temperature: f32, scale: &str) -> f32 {
     match scale {
         "C" => temperature * 9.0 / 5.0 + 32.0,
         "F" => (temperature - 32.0) * 5.0 / 9.0,
+        //This part of code is weird. I am forced to return a float unlike python. Will return to improve this
         _ => {
             println!("Invalid scale");
             temperature
