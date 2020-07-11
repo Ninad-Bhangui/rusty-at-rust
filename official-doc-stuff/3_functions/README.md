@@ -94,7 +94,7 @@ fn main() {
 
 #### Using `loop`
 
-- Check Basic loop in guessing game. [Chapter 1](../1_guessing_game/)
+- Check Basic loop in guessing game. [Chapter 1](https://github.com/nmb2405/rusty-at-rust/blob/9c4ee0c38891b98f8a13356f8fe9264d2caa72b9/official-doc-stuff/1_guessing_game/src/main.rs#L17)
 
 ```rust
 fn main() {
