@@ -50,3 +50,8 @@ fn convert(temperature: f32, scale: &str) -> f32 {
 
     }
 }
+//Tried writing basic unit test. Will look into structuring it when that point is reached in docs.
+#[test] fn test_converter(){
+    assert_eq!(32.0,convert(0.0, "C"));
+    assert_eq!(0.0,convert(32.0, "F"));
+}
