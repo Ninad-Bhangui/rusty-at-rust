@@ -1,4 +1,4 @@
-name: Fahrehnheit
+name: Fibonacci
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
-  working-directory: ./official-doc-stuff/fahrehnheit/ 
+  working-directory: ./official-doc-stuff/5_fibonacci/ 
 
 jobs:
   build:
