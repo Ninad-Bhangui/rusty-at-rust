@@ -4,6 +4,9 @@
 
 Following are important snippets of the code.
 
+Found someone else's code which was better structured but uses concepts not covered yet.
+<https://benjaminbrandt.com/converting-temperatures-in-rust/>
+
 ### Take user input
 
 ```rust
