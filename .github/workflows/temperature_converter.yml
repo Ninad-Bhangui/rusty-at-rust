@@ -1,4 +1,4 @@
-name: Temp Converter
+name: Temperature Converter
 
 on:
   push:
