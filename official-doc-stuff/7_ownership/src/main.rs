@@ -46,6 +46,14 @@ fn main() {
     // s.clear(); // error!
 
     println!("the first word is: {}", word);
+
+    //*********Extras***************
+    //Check mutability array
+    let a = [1, 2, 3, 4];
+    let b = a;
+    println!("{}", a[0]);
+
+    //C
 }
 
 fn move_ownership() {

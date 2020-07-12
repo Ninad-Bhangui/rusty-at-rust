@@ -121,3 +121,32 @@ References are immutable by default. Add `&mut` to change that.
 - Two *simultanous* immutable references to same data is allowed.
 - One immutable and one mutable *simultanous* reference is not allowed. Allowing this would make the immutable reference useless as the mutable reference could change the value.
 - However, if an immutable reference stops being used, a mutable reference can be used later ie., they are not simultaneously being used.
+
+## Slice
+
+- Type of immutable reference for part of the String
+
+```rust
+    let s = String::from("hello world");
+
+    let hello = &s[0..5];
+    let world = &s[6..11];
+    let hell = &s[..3];
+    let full_word = &s[..];
+```
+
+- String Literals Are Slices (`&str`)
+
+```rust
+fn first_word(s: &str) -> &str {
+```
+
+- slice can be used as function parameter. It is usually preferred over strings to make the function more generic and accept entire string or parts of it.
+
+```rust
+let s = String::from("hello world");
+let word = first_word(&my_string_literal[..]);
+```
+
+- Slices exist for other types like Array as well.
+- Note that arrays are immutable. So while slice was used to explain concepts like ownership and references in string and how borrowing a string in a function would make it unusable and cause some inconvinience. This would not be the case for Arrays as they would be usable after being passed to a function. Slices still have many other important uses which is what it's probably used for
