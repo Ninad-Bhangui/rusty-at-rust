@@ -8,5 +8,5 @@ Trying to learn rust using the documentation. These are notes created in the pro
 4. [Functions/Comments/Control Flow](./official-doc-stuff/3_functions)
 5. [Excercise 1 (Convert temperature between F and C](./official-doc-stuff/4_temperature_converter)
 6. [Excercise 2 (Get nth Fibonacci number](./official-doc-stuff/5_fibonacci)
-7. [Excercise 3 (Print Cumulative Lyrics of a christmas carol)](./official-doc-stuff/6_christmas_carol)
+7. [Excercise 3 (Print Cumulative Lyrics of a christmas carol)](./official-doc-stuff/6_christmas_Carol)
 8. [Ownership](./official-doc-stuff/7_ownership)
