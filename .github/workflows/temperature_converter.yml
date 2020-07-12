@@ -8,7 +8,7 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
-  working-directory: ./official-doc-stuff/4_temp_converter/ 
+  working-directory: ./official-doc-stuff/4_temperature_converter/ 
 
 jobs:
   build:
