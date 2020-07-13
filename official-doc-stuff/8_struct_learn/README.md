@@ -5,6 +5,7 @@
 I'm linking parts of the documentation which this particular code was created to understand.
 
 - <https://doc.rust-lang.org/book/ch05-01-defining-structs.html>
+- <https://doc.rust-lang.org/book/ch05-02-example-structs.html>
 
 ## Intro
 
@@ -112,3 +113,30 @@ let origin = Point(0, 0, 0);
 - Structs without fields.
 - Used for implementing traits.
 - Explained more later. I do not understand this yet.
+
+### Rectangle struct
+
+Later an example of rectangle struct is explained in docs which are not much different from User struct here.
+
+### Derived Traits
+
+To print a struct using `println!()` it needs to implement `std::fmt::Display`. Most types implement this but for structs due to their ambiguity do not.
+
+```rust
+#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+fn main() {
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+
+    println!("rect1 is {:?}", rect1);
+}
+```
+
+Above 
