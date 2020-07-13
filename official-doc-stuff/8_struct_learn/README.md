@@ -6,6 +6,7 @@ I'm linking parts of the documentation which this particular code was created to
 
 - <https://doc.rust-lang.org/book/ch05-01-defining-structs.html>
 - <https://doc.rust-lang.org/book/ch05-02-example-structs.html>
+- <https://doc.rust-lang.org/book/ch05-03-method-syntax.html>
 
 ## Intro
 
@@ -116,7 +117,7 @@ let origin = Point(0, 0, 0);
 
 ### Rectangle struct
 
-Later an example of rectangle struct is explained in docs which are not much different from User struct here.
+Later an example of rectangle struct is explained in docs which is not much different from User struct above.
 
 ### Derived Traits
 
@@ -139,4 +140,67 @@ fn main() {
 }
 ```
 
-Above 
+Above is how you would print struct. Need to read more about derive annotation
+
+### Method
+
+- Similar to function but are defined within context of struct
+
+```rust
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+}
+
+rect1.area()
+```
+
+- Similar to most languages
+
+```rust
+p1.distance(&p2);
+(&p1).distance(&p2);
+```
+
+Both lines above work the same way due to rust feature *automatic referencing and dereferencing*
+
+### Associated Functions
+
+- functions within `impl` blocks that don’t take `self` as a parameter.
+- often used for constructors that will return a new instance of the struct. For example , `String::from`
+
+```rust
+impl Rectangle {
+    fn square(size: u32) -> Rectangle {
+        Rectangle {
+            width: size,
+            height: size,
+        }
+    }
+}
+
+let sq = Rectangle::square(3);
+```
+
+Above returns instance of Rectangle but you only have to pass one dimension as it is square.
+
+### Multiple impl blocks
+
+```rust
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+}
+
+impl Rectangle {
+    fn can_hold(&self, other: &Rectangle) -> bool {
+        self.width > other.width && self.height > other.height
+    }
+}
+```
+
+- Above is possible and is the same as putting both functions in one block.
+
+- Most cases single block is used but in few cases multiple might be used.
