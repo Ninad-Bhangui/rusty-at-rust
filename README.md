@@ -10,3 +10,4 @@ Trying to learn rust using the documentation. These are notes created in the pro
 6. [Excercise 2 (Get nth Fibonacci number](./official-doc-stuff/5_fibonacci)
 7. [Excercise 3 (Print Cumulative Lyrics of a christmas carol)](./official-doc-stuff/6_christmas_Carol)
 8. [Ownership](./official-doc-stuff/7_ownership)
+9. [Structs](./official-doc-stuff/8_struct_learn)
