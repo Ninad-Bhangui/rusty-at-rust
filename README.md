@@ -1,6 +1,6 @@
 # rusty-at-rust
 
-Trying to learn rust using the documentation. These are notes created in the process of learning.
+Trying to learn rust using the documentation. These are my personal notes created in the process of learning. Sometimes I end up having to take a break so hopefully these help in giving a quick overview of what I've learnt.
 
 ## Appendix
 
