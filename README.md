@@ -14,3 +14,4 @@ Trying to learn rust using the documentation. These are notes created in the pro
 8. [Ownership](./official-doc-stuff/7_ownership)
 9. [Structs](./official-doc-stuff/8_struct_learn)
 10. [Enums](./official-doc-stuff/9_enums)
+11. [Project Strucutre](./official-doc-stuff/10_crate_module)
