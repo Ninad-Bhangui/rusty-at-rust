@@ -2,6 +2,8 @@
 
 Stores multiple values. Stored on heap.
 
+## Vectors
+
 ### Creating Vector
 
 - Stores values of the same type next to each other in memory.
@@ -121,3 +123,100 @@ Above needs dereference operator
 ### Extras
 
 Delving into the documentation for Vector [Here](./vector_extras.md)
+
+## Strings
+
+### Create
+
+```rust
+let mut s = String::new();
+let s = "initial contents".to_string();
+let s = String::from("initial contents");
+```
+
+Above are 3 different ways to create string
+
+### Push
+
+```rust
+let mut s = String::from("foo");
+s.push_str("bar");
+s.push('1');
+```
+
+- `push_str` takes string slice to avoid taking ownership
+- `push` takes single character
+
+### Concat
+
+```rust
+let s1 = String::from("Hello, ");
+let s2 = String::from("world!");
+let s3 = s1 + &s2; // s1 has been moved here and can no longer be used
+```
+
+```rust
+fn add(self, s: &str) -> String {
+```
+
+- `+` signature is kind of like the above. It requires `&str`
+- Rust uses *deref coercion* to turn `&s2` which is `&String` into `&s2[..]` which is `&str`
+- `self` is used in `+` (`add`) not `&self` so it takes ownership of `s1`
+
+```rust
+let s = format!("{} {}", s1 s3);
+```
+
+- Above marco does not take ownership
+- Works like println but returns value instead
+
+### Indexing
+
+- A `String` is a wrapper over a `Vec<u8>`
+- All characters in the string `"Здравствуйте"` take 2 bytes each, so normal indexing will point to non character and is disabled for that reason
+
+```rust
+let s1 = String::from("hello");
+let h = s1[0];
+```
+
+Above will not work as indexing is not allowed in strings.
+
+- Strings can be looked at as bytes, scalar values and grapheme clusters
+
+#### Grapheme clusters
+
+"नमस्ते"
+Bytes : `[224, 164, 168, 224, 164, 174, 224, 164, 184, 224, 165, 141, 224, 164, 164,
+224, 165, 135]`
+
+Scalar : `['न', 'म', 'स', '्', 'त', 'े']`
+
+Grapheme Clusters : `["न", "म", "स्", "ते"]`
+
+### Slicing
+
+```rust
+
+let hello = "Здравствуйте";
+
+let s = &hello[0..4];
+```
+
+Giving ranges that are invalid character boundaries will cause pani
+
+### Iteration
+
+```rust
+for c in "नमस्ते".chars() {
+    println!("{}", c);
+}
+```
+
+```rust
+for b in "नमस्ते".bytes() {
+    println!("{}", b);
+}
+```
+
+- Iterating over grapheme clusters not available by default. Crate required.

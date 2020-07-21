@@ -41,4 +41,27 @@ fn main() {
 
     vec2.remove(1); // Removes and shifts. Wondering why pop returns  Options enum but not remove.
     println!("vec2 {:?}", vec2);
+
+    //String Basics
+    let s1 = String::from("Hello, ");
+    let s2 = String::from("world!");
+    let s3 = s1 + &s2; // s1 has been moved here and can no longer be used
+    println!("{}", s3);
+    // println!("{}", s1); //s1 Cannot be used
+
+    let s4 = format!("{} {}", s3, s2);
+    println!("{} {} {}", s4, s3, s2); //All can be used
+
+    //Indexing Strings
+    let s1 = String::from("hello");
+    // let h = &s1[0];  //Does not work
+
+    // Iterating
+    for c in "नमस्ते".chars() {
+        println!("{}", c);
+    }
+
+    for b in "नमस्ते".bytes() {
+        println!("{}", b);
+    }
 }
