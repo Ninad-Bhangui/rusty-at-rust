@@ -36,6 +36,18 @@ vec1.resize(5, 0);
 - Capacity is space reserved. If length exceeds capacity, elements are reallocated.
 - Recomennded to specify capacity beforehand to improve performance and reduce reallocations.
 
+```rust
+let mut vec = vec![1, 2, 3];
+vec.insert(1, 4);
+```
+
+```rust
+let mut vec = vec![1, 4, 2, 3];
+vec.remove(1);
+```
+
+- Wondering why remove returns item/panics if not exists and not Options enum like pop
+
 ### Guarantee
 
 - Vector always will be  (pointer, capacity, length) triplet

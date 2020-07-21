@@ -32,4 +32,13 @@ fn main() {
     assert_eq!(vec![0; 5], vec1);
     let a = v.pop(); //Returns Options enum instance probably because an empty array would have nothing to pop and return None variant
     println!("Popped item : {:?}", a);
+
+    let mut vec2 = vec![1, 2, 3];
+    vec2.insert(1, 4);
+    println!("vec2 {:?}", vec2);
+    // vec2.insert(5, 5); //Panics due to index > length
+    // println!("vec2 {:?}", vec2);
+
+    vec2.remove(1); // Removes and shifts. Wondering why pop returns  Options enum but not remove.
+    println!("vec2 {:?}", vec2);
 }
