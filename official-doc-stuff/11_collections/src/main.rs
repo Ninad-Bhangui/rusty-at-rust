@@ -128,12 +128,14 @@ fn main() {
         hash_map::Entry::Vacant(s) => println!(" {:?} Key does not exist", s),
     }
 
-    //Insert returns a mutable reference. SO let's play with that
+    //Insert returns a mutable reference. So let's play with that
 
     let a = scores.entry(String::from("Blue")).or_insert(0); // Does not update
     let b = scores.entry(String::from("Orange")).or_insert(44); // Updates
 
-    //TODO: Uncommenting this causes error. Investigate
+    // Uncommenting this causes error.
+    //Note that only one mutable borrow is allowed at a time.
+    //So when b gets a mutable reference to scores, a is invalid from that point onwards
     // println!("{}", a);
     println!("{}", b);
 }
