@@ -1,3 +1,4 @@
+use std::ffi::OsString;
 fn main() {
     //Basic docs
     println!("Hello, world!");
@@ -64,4 +65,8 @@ fn main() {
     for b in "नमस्ते".bytes() {
         println!("{}", b);
     }
+
+    //Extras
+    let os_string = OsString::from("foo");
+    println!("first letter is {}", os_string[0])
 }

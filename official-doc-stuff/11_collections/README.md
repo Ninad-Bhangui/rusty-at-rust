@@ -126,6 +126,9 @@ Delving into the documentation for Vector [Here](./vector_extras.md)
 
 ## Strings
 
+- Strings are always valid UTF-8
+- 3 components *pointer to bytes*,  *length* and *capacity*.
+
 ### Create
 
 ```rust
@@ -220,3 +223,7 @@ for b in "नमस्ते".bytes() {
 ```
 
 - Iterating over grapheme clusters not available by default. Crate required.
+
+### Extras
+
+The functions implemented for `String` are very similar to those implemented by `Vector`
