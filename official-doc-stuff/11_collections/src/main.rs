@@ -1,4 +1,3 @@
-use std::ffi::OsString;
 fn main() {
     //Basic docs
     println!("Hello, world!");
@@ -66,7 +65,75 @@ fn main() {
         println!("{}", b);
     }
 
-    //Extras
-    let os_string = OsString::from("foo");
-    println!("first letter is {}", os_string[0])
+    //Hash Map
+    use std::collections::hash_map;
+    use std::collections::HashMap;
+
+    let teams = vec![String::from("Blue"), String::from("Yellow")];
+    let initial_scores = vec![10, 50];
+
+    // ZIP creates vector of tuples
+    // Collect is able to infer that it should collect into a hashmap based on type annotation
+    let mut scores: HashMap<_, _> = teams.into_iter().zip(initial_scores.into_iter()).collect();
+
+    println!("{:?}", scores);
+
+    //Ownership
+    let key = String::from("five");
+    let val = 5;
+    let key2 = String::from("six");
+    let val2 = 6;
+    let mut map = HashMap::new();
+    map.insert(key, val);
+    let mut map2 = HashMap::new();
+    map2.insert(&key2, val2);
+
+    // println!("{}", key); //Does not compile as String is borrowed
+    println!("{}", val); //Compile as not borrowed
+
+    println!("{:?}", map2);
+    println!("{}", key2); //key2 can be used as reference was passed to map2
+
+    let key3 = key2;
+    // println!("{:?}", map2);  //This line would throw an error since key2 gets moved above while map2 still has a refernece to it.
+
+    //Iterating over HashMap
+    for (key, value) in &scores {
+        println!("{}: {}", key, value);
+    }
+
+    //Iterating over Mutable HashMap
+    for (key, value) in &mut scores {
+        *value += 100;
+    }
+
+    scores.insert(String::from("Blue"), 999);
+
+    println!("{:?}", scores);
+
+    scores.entry(String::from("Blue")).or_insert(0); // Does not update
+    scores.entry(String::from("Green")).or_insert(33); // Updates
+
+    println!("{:?}", scores);
+
+    //.entry returns an enum so let's try match with it
+
+    match scores.entry(String::from("Blue")) {
+        hash_map::Entry::Occupied(s) => println!(" {:?} Key exists!", s),
+        hash_map::Entry::Vacant(s) => println!(" {:?} Key does not exist", s),
+    }
+
+    match scores.entry(String::from("Black")) {
+        hash_map::Entry::Occupied(s) => println!("{:?} Key exists!", s),
+        hash_map::Entry::Vacant(s) => println!(" {:?} Key does not exist", s),
+    }
+
+    //Insert returns a mutable reference. SO let's play with that
+
+    let a = scores.entry(String::from("Blue")).or_insert(0); // Does not update
+    let b = scores.entry(String::from("Orange")).or_insert(44); // Updates
+
+    //TODO: Uncommenting this causes error. Investigate
+    // println!("{}", a);
+    println!("{}", b);
 }

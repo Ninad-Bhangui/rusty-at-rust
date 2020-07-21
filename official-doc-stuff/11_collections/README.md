@@ -227,3 +227,55 @@ for b in "नमस्ते".bytes() {
 ### Extras
 
 The functions implemented for `String` are very similar to those implemented by `Vector`
+
+## Hash Maps
+
+- `HashMap<K, V>` stores a mapping of keys of type K to values of type V via a *hashing function*
+
+```rust
+use std::collections::HashMap;
+
+let mut scores = HashMap::new();
+
+scores.insert(String::from("Blue"), 10);
+scores.insert(String::from("Yellow"), 50);
+```
+
+```rust
+use std::collections::HashMap;
+
+let teams = vec![String::from("Blue"), String::from("Yellow")];
+let initial_scores = vec![10, 50];
+
+let mut scores: HashMap<_, _> =
+    teams.into_iter().zip(initial_scores.into_iter()).collect();
+```
+
+### Ownership
+
+- Copy trait types get copied and rest are moved when inserted in HashMap.
+
+### Accessing values
+
+```rust
+let team_name = String::from("Blue");
+let score = scores.get(&team_name);
+```
+
+- `get` returns `Option<&V>` and value is wrapped in `Some(10)`
+
+### Iterating
+
+```rust
+for (key, value) in &scores {
+        println!("{}: {}", key, value);
+    }
+```
+
+- Similar to Vector. Can iterate over mutable reference too.
+
+### Updating HashMap
+
+- By default if `insert` is called and key exists it overwrites the value
+- `or_insert` can be used to insert only if key has no value
+- or_insert returns mutable reference to either old value or new value depending on it's existence in the Hash Map.
