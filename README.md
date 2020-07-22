@@ -15,3 +15,5 @@ Trying to learn rust using the documentation. These are my personal notes create
 9. [Structs](./official-doc-stuff/8_struct_learn)
 10. [Enums](./official-doc-stuff/9_enums)
 11. [Project Strucutre](./official-doc-stuff/10_crate_module) (Least favorite chapter)
+12. [Collections](./official-doc-stuff/11_collections)
+13. [Excercise 4 (Mean/Median/Mode of Vector)](./official-doc-stuff/12_vector_aggregations)
