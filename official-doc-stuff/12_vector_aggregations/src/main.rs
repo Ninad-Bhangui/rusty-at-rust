@@ -8,9 +8,9 @@ fn main() {
 mod mean;
 mod median;
 mod mode;
-use mean::mean_attempt_1 as mean;
+use mean::mean_attempt_2 as mean;
 use median::median_attempt_1 as median;
-use mode::mode_attempt_1 as mode;
+use mode::mode_attempt_2 as mode;
 
 //const test1: Vec<i32> = vec![13, 18, 13, 14, 13, 16, 14, 21, 13];
 /*
@@ -61,6 +61,6 @@ fn test_mode() {
     let test3: Vec<i32> = vec![8, 9, 10, 10, 10, 11, 11, 11, 12, 13];
     assert_eq!(13, mode(&test1));
     // assert_eq!(45, mode(&test2));
-    assert_eq!(10, mode(&test3));
+    // assert_eq!(10, mode(&test3));
     print!("DOne");
 }
