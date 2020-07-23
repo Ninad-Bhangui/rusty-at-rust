@@ -18,6 +18,10 @@ pub fn mode_attempt_1(li: &Vec<i32>) -> i32 {
 }
 
 pub fn mode_attempt_2(li: &Vec<i32>) -> i32 {
+    /*
+    This is not my code. I found it somewhere and intend to understand it later.
+    I especially do not properly understand how max_by_key is used and hope to after reaching the closures chapter
+    */
     let mut counter: HashMap<i32, i32> = HashMap::new();
     for &i in li {
         *counter.entry(i).or_insert(0) += 1;
