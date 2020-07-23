@@ -5,16 +5,31 @@ Keep in mind the details about UTF-8 encoding!
 */
 
 fn main() {
-    println!("Hello, world!");
+    let test_str1 = String::from("did you ever hear the tragedy of darth plagueis the wise");
+    piglatin(&test_str1[..]);
 }
-
+fn convert(word: &str) -> String {
+    let vowels = ['a', 'e', 'i', 'o', 'u'];
+    let first_letter = word.chars().nth(0).unwrap();
+    if vowels.contains(&first_letter) {
+        format!("{}-{} ", word, "hay")
+    } else {
+        format!("{}-{}{} ", &word[1..], first_letter, "ay")
+    }
+}
 fn piglatin(sentence: &str) -> String {
-    String::from("test")
+    let mut pigstring = String::new();
+    for word in sentence.split(" ") {
+        let converted = convert(&word[..]);
+        pigstring.push_str(&converted);
+        println!("{}", pigstring);
+    }
+    pigstring.trim().to_string()
 }
 
 #[test]
 fn test_median() {
-    let test_str1 = String::from("did you ever hear the tragedy of darth plagueis the wise?");
-    let result_str1 = String::from("id-day ou-yay ever-hay ear-hay he-tay ragedy-tay of-hay arth-day lagueis-pay he-tay ise-way?");
-    assert_eq!(String::from("test"), piglatin(&test_str1[..]))
+    let test_str1 = String::from("did you ever hear the tragedy of darth plagueis the wise");
+    let result_str1 = String::from("id-day ou-yay ever-hay ear-hay he-tay ragedy-tay of-hay arth-day lagueis-pay he-tay ise-way");
+    assert_eq!(result_str1, piglatin(&test_str1[..]))
 }
