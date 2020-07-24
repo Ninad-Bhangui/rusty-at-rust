@@ -38,7 +38,6 @@ fn piglatin(sentence: &str) -> String {
     for word in sentence.split(" ") {
         let converted = convert(&word[..]);
         pigstring.push_str(&converted);
-        println!("{}", pigstring);
     }
     pigstring.trim().to_string()
 }
@@ -59,4 +58,8 @@ fn test_convert() {
     let test_str2 = String::from("first");
     let result_str2 = String::from("irst-fay");
     assert_eq!(result_str2, piglatin(&test_str2[..]));
+
+    let test_str3 = String::from("");
+    let result_str3 = String::from("");
+    assert_eq!(result_str3, piglatin(&test_str3[..]));
 }
