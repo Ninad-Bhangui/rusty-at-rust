@@ -31,5 +31,6 @@ fn piglatin(sentence: &str) -> String {
 fn test_median() {
     let test_str1 = String::from("did you ever hear the tragedy of darth plagueis the wise");
     let result_str1 = String::from("id-day ou-yay ever-hay ear-hay he-tay ragedy-tay of-hay arth-day lagueis-pay he-tay ise-way");
+
     assert_eq!(result_str1, piglatin(&test_str1[..]))
 }
