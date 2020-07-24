@@ -9,6 +9,9 @@ fn main() {
     println!("{}", piglatin(&test_str1[..]));
 }
 fn convert(word: &str) -> String {
+    /*
+    Main function which converts each word to piglatin
+    */
     let vowels = ['a', 'e', 'i', 'o', 'u'];
     let first_letter = word.chars().nth(0).unwrap();
     if vowels.contains(&first_letter) {
@@ -28,6 +31,9 @@ fn convert(word: &str) -> String {
     }
 }
 fn piglatin(sentence: &str) -> String {
+    /*
+    This function splits the sentence into multiple words and calls the main convert function on each word.
+    */
     let mut pigstring = String::new();
     for word in sentence.split(" ") {
         let converted = convert(&word[..]);
@@ -38,19 +44,19 @@ fn piglatin(sentence: &str) -> String {
 }
 
 #[test]
-// fn test_median() {
-//     let test_str1 = String::from("did you ever hear the tragedy of darth plagueis the wise");
-//     let result_str1 = String::from("id-day ou-yay ever-hay ear-hay he-tay ragedy-tay of-hay arth-day lagueis-pay he-tay ise-way");
+fn test_piglatin() {
+    let test_str1 = String::from("did you ever hear the tragedy of darth plagueis the wise");
+    let result_str1 = String::from("id-day ou-yay ever-hay ear-hay he-tay ragedy-tay of-hay arth-day lagueis-pay he-tay ise-way");
 
-//     assert_eq!(result_str1, piglatin(&test_str1[..]));
-// }
+    assert_eq!(result_str1, piglatin(&test_str1[..]));
+}
 #[test]
 fn test_convert() {
-    let test_str1 = String::from("hello");
-    let result_str1 = String::from("ello-hay");
+    let test_str1 = String::from("apple");
+    let result_str1 = String::from("apple-hay");
     assert_eq!(result_str1, piglatin(&test_str1[..]));
 
-    let test_str2 = String::from("again");
-    let result_str2 = String::from("again-hay");
+    let test_str2 = String::from("first");
+    let result_str2 = String::from("irst-fay");
     assert_eq!(result_str2, piglatin(&test_str2[..]));
 }
