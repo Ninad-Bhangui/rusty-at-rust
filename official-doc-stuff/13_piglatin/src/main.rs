@@ -12,22 +12,27 @@ fn convert(word: &str) -> String {
     /*
     Main function which converts each word to piglatin
     */
-    let vowels = ['a', 'e', 'i', 'o', 'u'];
-    let first_letter = word.chars().nth(0).unwrap();
-    if vowels.contains(&first_letter) {
-        format!("{}-{} ", word, "hay")
-    } else {
-        /*
-        I was wondering why the first line below did not work and why the second line did. After asking on discord, I was told that,
-        rust implicitly borrows (does not move). It does so via match foo { ref bar => ... } which requires that the foo (word[1..] here) be Sized.
-        To explicitly borrow we have to use &
+    let first_letter = word.chars().nth(0);
+    match first_letter {
+        Some('a') | Some('e') | Some('i') | Some('o') | Some('u') => {
+            format!("{}-{} ", word, "hay")
+        },
+        Some(c) => {
+            /*
+            I was wondering why the first line below did not work and why the second line did. After asking on discord, I was told that,
+            rust implicitly borrows (does not move). It does so via match foo { ref bar => ... } which requires that the foo (word[1..] here) be Sized.
+            To explicitly borrow we have to use &
+    
+    
+            My next question was why would rust not know the size of the slice at compile time to which someone answered,
+            that one could specify the length it needs to be sliced to at runtime which makes sense.
+            */
+            format!("{}-{}{} ", &word[1..], c, "ay")
+        },
+        None => {
+            String::from("")
+        }
 
-
-        My next question was why would rust not know the size of the slice at compile time to which someone answered,
-        that one could specify the length it needs to be sliced to at runtime which makes sense.
-        */
-        //format!("{}-{}{} ", word[1..], first_letter, "ay")
-        format!("{}-{}{} ", &word[1..], first_letter, "ay")
     }
 }
 fn piglatin(sentence: &str) -> String {
@@ -58,7 +63,9 @@ fn test_convert() {
     let test_str2 = String::from("first");
     let result_str2 = String::from("irst-fay");
     assert_eq!(result_str2, piglatin(&test_str2[..]));
-
+}
+#[test]
+fn test_convert_empty(){
     let test_str3 = String::from("");
     let result_str3 = String::from("");
     assert_eq!(result_str3, piglatin(&test_str3[..]));
