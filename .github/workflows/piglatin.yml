@@ -1,0 +1,25 @@
+name: PigLatin
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+env:
+  CARGO_TERM_COLOR: always
+  working-directory: ./official-doc-stuff/13_piglatin/ 
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build
+      working-directory: ${{env.working-directory}}
+      run: cargo build --verbose
+    - name: Run tests
+      working-directory: ${{env.working-directory}}
+      run: cargo test --verbose
