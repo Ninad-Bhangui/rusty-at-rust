@@ -17,3 +17,6 @@ Trying to learn rust using the documentation. These are my personal notes create
 11. [Project Strucutre](./official-doc-stuff/10_crate_module) (Least favorite chapter)
 12. [Collections](./official-doc-stuff/11_collections)
 13. [Excercise 4 (Mean/Median/Mode of Vector)](./official-doc-stuff/12_vector_aggregations)
+14. [Excercise 5 (Convert string to piglatin)](./official-doc-stuff/13_piglatin)
+15. [Excercise 6 (Use Vec and HashMap for managing list of employees with their department)](./official-doc-stuff/14_company)
+16. [Error Handling](./official-doc-stuff/15_error_handling)
