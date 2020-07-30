@@ -127,3 +127,121 @@ fn main() {
 ```
 
 - Above will not compile as there is a chance if string2 was larger, then result would point to it while having a larger lifetime
+
+## Lifetime annotations in struct
+
+```rust
+struct ImportantExcerpt<'a> {
+    part: &'a str,
+}
+
+fn main() {
+    let novel = String::from("Call me Ishmael. Some years ago...");
+    let first_sentence = novel.split('.').next().expect("Could not find a '.'");
+    let i = ImportantExcerpt {
+        part: first_sentence,
+    };
+}
+```
+
+## Lifetime Elision
+
+```rust
+fn first_word(s: &str) -> &str {
+    let bytes = s.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[0..i];
+        }
+    }
+
+    &s[..]
+}
+```
+
+- Above code works without lifetimes even though it is taking and returning references.
+- Here, the compiler guesses lifetimes based on few rules called *lifetime elision* rules.
+- *Input lifetimes* Lifetimes on funtion/method parameters.
+- *Output Lifetimes* Lifetimes on return values
+- Three rules are used to figure out lifetime references
+
+    1. Each parameter that is a refernce gets it's own lifetime parameter
+    2. If there is only one input lifetime parameter, that lifetime is assigned to all output parameters.
+    3. If there are multiple input lifetime parameters but one of them is `&self` or `&mut self`, that lifetime is assigned to all output lifetime parameters
+
+### First and Second rule Pass Example
+
+```rust
+fn first_word(s: &str) -> &str {
+```
+
+- In above function since there's only one input parameter, compiler will apply first and second rule and assign both `s` and the return value the same lifetime making it equivalent to below
+
+```rust
+fn first_word<'a>(s: &'a str) -> &'a str {
+```
+
+### Second and Third rule Fail Example
+
+```rust
+fn longest(x: &str, y: &str) -> &str {
+```
+
+- Here first rule is applied and x and y get different lifetimes.
+- Second rule fails as there are multiple lifetimes and return value is not assigned any lifetime
+- Third rule fails as it is not a method and does not have self.
+- SO return lifetime is unknown at the end and compiler will force you to specify lifetimes explicitly
+
+## Lifetime Annotations in Method Definitions
+
+```rust
+impl<'a> ImportantExcerpt<'a> {
+    fn level(&self) -> i32 {
+        3
+    }
+}
+```
+
+- Above code first rule is enough and return type and compiler can assign lifetimes
+
+```rust
+impl<'a> ImportantExcerpt<'a> {
+    fn announce_and_return_part(&self, announcement: &str) -> &str {
+        println!("Attention please: {}", announcement);
+        self.part
+    }
+}
+```
+
+- Above code has multiple parameters but because one of them is `&self`, third rule applies and `&str` return gets lifetime of self
+
+## The Static Lifetime
+
+```rust
+let s: &'static str = "I have a static lifetime.";
+```
+
+- Can specify static lifetimes where refernce would live for entire duration of program
+
+## Summary (Everything together)
+
+```rust
+use std::fmt::Display;
+
+fn longest_with_an_announcement<'a, T>(
+    x: &'a str,
+    y: &'a str,
+    ann: T,
+) -> &'a str
+where
+    T: Display,
+{
+    println!("Announcement! {}", ann);
+    if x.len() > y.len() {
+        x
+    } else {
+        y
+    }
+}
+```
