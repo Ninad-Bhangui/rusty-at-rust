@@ -20,3 +20,7 @@ Trying to learn rust using the documentation. These are my personal notes create
 14. [Excercise 5 (Convert string to piglatin)](./official-doc-stuff/13_piglatin)
 15. [Excercise 6 (Use Vec and HashMap for managing list of employees with their department)](./official-doc-stuff/14_company)
 16. [Error Handling](./official-doc-stuff/15_error_handling)
+17. Generics, Traits and Lifetimes
+17.1. [Generics](./official-doc-stuff/16_generics)
+17.2. [Traits](./official-doc-stuff/17_traits)
+17.3. [Lifetimes](./official-doc-stuff/18_lifetimes)
