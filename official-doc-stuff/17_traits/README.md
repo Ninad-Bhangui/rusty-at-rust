@@ -165,3 +165,52 @@ fn returns_summarizable() -> impl Summary {
 
 - The same function that returns Traits cannot return different types.
 - Cannot return `Tweet` or `NewsArticle` conditionally in above snippet
+
+## Fixing the largest Function with Trait Bounds
+
+In previous chapter the largest function accepting Generics was written as :
+
+```rust
+fn largest<T>(list: &[T]) -> T {
+```
+
+The above did not compile. To make it compile this can be changed to
+
+```rust
+fn largest<T: PartialOrd + Copy>(list: &[T]) -> T {
+```
+
+- This forces the compiler to check that only types which implement `PartialOrd` and `Copy` can be passed to the function. This function will always work.
+- We need `PartialOrd` for comparision and since we are using generics, we need a type that implements `Copy` trait to follow ownership rules. `let mut largest = list[0];` This would not work if the type did not implement copy.
+
+## Using Trait Bounds to Conditionally Implement Methods
+
+```rust
+
+use std::fmt::Display;
+
+struct Pair<T> {
+    x: T,
+    y: T,
+}
+
+impl<T> Pair<T> {
+    fn new(x: T, y: T) -> Self {
+        Self { x, y }
+    }
+}
+
+impl<T: Display + PartialOrd> Pair<T> {
+    //Can be called only if T implements both PartialOrd and Pair
+    fn cmp_display(&self) {
+        if self.x >= self.y {
+            println!("The largest member is x = {}", self.x);
+        } else {
+            println!("The largest member is y = {}", self.y);
+        }
+    }
+}
+```
+
+- Above `Pair` always implements `new` function
+- `Pair` implements `cmp_display` only if type of `T` implements `Display` and `PartialOrd` trait.
