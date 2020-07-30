@@ -24,3 +24,4 @@ Trying to learn rust using the documentation. These are my personal notes create
 17.1. [Generics](./official-doc-stuff/16_generics)
 17.2. [Traits](./official-doc-stuff/17_traits)
 17.3. [Lifetimes](./official-doc-stuff/18_lifetimes)
+18. [Tests](./official-doc-stuff/19_testing_practice)
