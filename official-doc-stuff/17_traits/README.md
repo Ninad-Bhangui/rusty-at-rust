@@ -212,5 +212,12 @@ impl<T: Display + PartialOrd> Pair<T> {
 }
 ```
 
-- Above `Pair` always implements `new` function
+- Above struct `Pair` always implements `new` function
 - `Pair` implements `cmp_display` only if type of `T` implements `Display` and `PartialOrd` trait.
+
+```rust
+impl<T: Display> ToString for T {
+```
+
+- Above is an example where standard library implements `ToString` trait on any type that implements `Display` trait
+- So one trait is implemented only for types that implement another trait
