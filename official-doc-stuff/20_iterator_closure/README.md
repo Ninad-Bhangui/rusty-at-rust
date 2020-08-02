@@ -93,3 +93,4 @@ v1.iter().map(|x| x + 1);
 - Above code is valid but does nothing as iterators are lazy.
 - A consuming adaptor is needed which consumes it and returns. `collect`
 
+- Closures and iterators do not incur any performance loss.
