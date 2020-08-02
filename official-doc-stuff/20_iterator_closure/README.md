@@ -34,6 +34,8 @@ fn main() {
 ```
 
 - Closures can access variables from the scope they're defined in
+
+**Note** I do not understand the below clearly. Attempt to understand clearly later and update
 - All closures implement at least one of the traits: `Fn`, `FnMut`, or `FnOnce`
 `Fn` - Borrow values in scope immutably. (`x` would be borrowed immutably in above snippet)
 `FnMut` - Borrow values mutably.
