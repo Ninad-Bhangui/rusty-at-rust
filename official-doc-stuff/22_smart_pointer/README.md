@@ -92,3 +92,121 @@ fn main() {
 ![](https://doc.rust-lang.org/book/img/trpl15-02.svg)
 
 - Above is how rust would allocate now. Note that it is static and not infinite.
+
+## Treating Smart Pointers Like Regular References with the Deref Trait
+
+- Implementing `Deref` trait lets you customize dereference `*` operator
+
+```rust
+fn main() {
+    let x = 5;
+    let y = &x;
+
+    assert_eq!(5, x);
+    assert_eq!(5, *y);
+}
+```
+
+Normal reference
+
+```rust
+fn main() {
+    let x = 5;
+    let y =Box::new(x);
+
+    assert_eq!(5, x);
+    assert_eq!(5, *y);
+}
+```
+
+Using `Box<T>` like reference.
+
+## Defining Our Own Smart Pointer
+
+- `Box<T>` is defined as tuple struct with one element.
+
+```rust
+struct MyBox<T>(T);
+
+impl<T> MyBox<T> {
+    fn new(x: T) -> MyBox<T> {
+        MyBox(x)
+    }
+}
+fn main() {
+    let x = 5;
+    let y = MyBox(x);
+
+    assert_eq!(5, x);
+    assert_eq!(5, *y);
+}
+```
+
+- Above will not compile as `MyBox` does not implement `Deref` yet.
+
+## Implementing Deref
+
+```rust
+use std::ops::Deref;
+
+impl<T> Deref for MyBox<T> {
+    type Target = T;
+
+    fn deref(&self) -> &T {
+        &self.0
+    }
+}
+```
+
+- Above will compile
+- Rust knows only how to dereference `&` references
+- Rust compiler will convert `*y` to `*(y.deref())`
+- Since `y.deref()` returns an `&` reference, `*(y.deref())` will actually give us `*(&self.0)` which it can dereference
+
+## Implicit Deref Coercions with Functions and Methods
+
+- Deref coercion converts such a type into a reference to another type
+- Deref coercion can convert `&String` to `&str` because String implements the Deref trait such that it returns str
+
+### Using MyBox\<String\> with function taking &str
+
+- Without deref coercion
+
+```rust
+fn hello(name: &str) {
+    println!("Hello, {}!", name);
+}
+fn main() {
+    let m = MyBox::new(String::from("Rust"));
+    hello(&(*m)[..]);
+}
+```
+
+- `(*m)` dereferences `MyBox<String>` into a `<String>`, Then `&` and `[..]` takes string slice of `String` to match `hello`.
+
+- With Deref coercion
+
+```rust
+fn hello(name: &str) {
+    println!("Hello, {}!", name);
+}
+fn main() {
+    let m = MyBox::new(String::from("Rust"));
+    hello(&m);
+}
+```
+
+- Rust converts `&MyBox<String>` into `&String` by calling `deref`.
+- Standard library provides implementation of `Deref` on `String` to return string slice. This turns `&String` into `&str`.
+
+- Rust is able to analyze types and determine how many `Deref`s are neccesary to match parameter type. This is resolved at compile time so no runtime penalty
+
+## Deref Coercion with Mutability
+
+Three Cases:
+
+- From `&T` to `&U` when `T: Deref<Target=U>`. (immutable -> immutable)
+- From `&mut T` to `&mut U` when `T: DerefMut<Target=U>` (mutable -> mutable)
+- From `&mut T` to `&U` when `T: Deref<Target=U>` (mutable -> immutable)
+
+immutable -> mutable is **not possible**.
