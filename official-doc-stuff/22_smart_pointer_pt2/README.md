@@ -23,3 +23,18 @@ impl Drop for CustomSmartPointer {
     }
 }
 ```
+
+## Explicit Drop
+
+```rust
+let c = CustomSmartPointer {
+    data: String::from("new_string"),
+};
+drop_instance.drop();    //Not allowed.
+drop(c); // std::mem::drop Allowed early drop
+```
+
+- We can’t disable the automatic insertion of drop when a value goes out of scope.
+- We can't call `drop` explicitly.
+- Calling `drop` explicitly is not allowed as rust would automatically call `drop` at the end of main. Leads to *double free error*
+- to force it, we can use `std::mem::drop`
