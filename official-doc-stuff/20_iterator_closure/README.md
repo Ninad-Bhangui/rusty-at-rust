@@ -36,16 +36,18 @@ fn main() {
 - Closures can access variables from the scope they're defined in
 
 **Note** I do not understand the below clearly. Attempt to understand clearly later and update
+
 - All closures implement at least one of the traits: `Fn`, `FnMut`, or `FnOnce`
 `Fn` - Borrow values in scope immutably. (`x` would be borrowed immutably in above snippet)
 `FnMut` - Borrow values mutably.
 `FnOnce` - Consume the variable. It can take ownership only once. So this closure can be called only once. (`x` will not be usable after closure call)
 
+Explained more in detail in [link](https://youtu.be/9PIn4suU3jM) and [link](https://huonw.github.io/blog/2015/05/finding-closure-in-rust/)
+
 ## Iterator
 
 - Iterators are *lazy*. No effect until you call methods to consume (return something i guess) the iterator.
   
-
 ```rust
 pub trait Iterator {
     type Item;
