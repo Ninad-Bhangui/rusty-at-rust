@@ -117,4 +117,3 @@ handle.join().unwrap();
 
 - Above will not compile as closure may outlive current function but borrows v which is not owned by closure.
 - Consider what would happen if we did `v.drop()` after spawning thread. It may get dropped before thread even runs. That is why rust does not compile.
-
