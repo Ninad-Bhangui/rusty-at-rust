@@ -65,7 +65,7 @@ mod tests {
     // RefCell is used to fix that.
     impl Messenger for MockMessenger {
         fn send(&self, message: &str) {
-            //RefCell method borrow_mut  gives mutable reference
+            //RefCell method borrow_mut  gives mutable reference -> RefMut<T>
             let mut borrow = self.sent_messages.borrow_mut();
             // let mut borrow2 = self.sent_messages.borrow_mut(); This line panics at runtime. already borrowed:BorrowMutError
             borrow.push(String::from(message));
@@ -78,7 +78,7 @@ mod tests {
         let mut limit_tracker = LimitTracker::new(&mock_messenger, 100);
 
         limit_tracker.set_value(80);
-        //mutable reference
+        //immutable reference -> Ref<T>
         assert_eq!(mock_messenger.sent_messages.borrow().len(), 1);
     }
 }
