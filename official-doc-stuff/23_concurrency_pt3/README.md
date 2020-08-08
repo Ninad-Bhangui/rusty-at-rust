@@ -44,6 +44,7 @@ println!("m = {:?}",m);
 - `MutexGuard` implements `Deref` to point to inner data. 
 - It also has `Drop` implementation that releases lock when `MutexGuard` goes out of scope.
 - So we cannot forget to release the lock and block mutex from being used by other threads.
+- Mutex allows interior mutability like `RefCell<T>`
 
 ## Sharing Mutex\<T\> between threads
 
@@ -75,4 +76,6 @@ println!("Result: {}", *counter.lock().unwrap());
 
 ## Atomic Reference Counting - Arc\<T\>
 
-- Like `Rc<T>` but is safe in concurrent situations
+- Like `Rc<T>` but is safe in concurrent situations.
+- *Atomics* is not explained in detail. Will have to research more. Not needed for this section.
+- `Arc<T>` comes with performance penalty over `Rc<T>` so it should only be used for concurrency reasons.
