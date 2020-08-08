@@ -63,8 +63,21 @@ fn thread_section_3() {
 //     handle.join().unwrap();
 // }
 
+fn thread_section_5() {
+    //This runs as thread takes ownership of v
+    let v = vec![1,2,3];
+
+    let handle = thread::spawn(move || {
+        println!("Vector : {:?}",v);
+    });
+    //Below line throws compiler error, value borroed after move
+    // println!("Vector : {:?}",v);
+    handle.join().unwrap();
+}
+
 fn main() {
     // thread_section_1();
     // thread_section_2();
-    thread_section_3();
+    // thread_section_3();
+    thread_section_5();
 }
