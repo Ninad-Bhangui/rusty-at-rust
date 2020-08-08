@@ -1,5 +1,6 @@
 /**
  * combining RC and RefCell
+ * Multiple owners and mutable reference
  */
 #[derive(Debug)]
 enum List {
