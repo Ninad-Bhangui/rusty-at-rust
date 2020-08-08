@@ -31,6 +31,6 @@ if let Some(link) = a.tail() {
 - strong references express ownership. Weak references do not and will not cause cycle as weak references are broken once strong count reaches 0.
 - Getting value from weak reference is done using `upgrade` which returns `Option<T>` some if value has not been dropped else None. So even if strong count is 0, compiler makes sure use of any weak references handles non existent references using `Option<T>`.
 
-##Tree Data structure
+## Tree Data structure
 
 Refer to code in `main.rs`

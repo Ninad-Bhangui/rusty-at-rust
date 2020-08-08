@@ -26,3 +26,16 @@ Trying to learn rust using the documentation. These are my personal notes create
 17.3. [Lifetimes](./official-doc-stuff/18_lifetimes)
 18. [Tests](./official-doc-stuff/19_testing_practice)
 19. [I/O Project](./official-doc-stuff/minigrep)
+20. [Iterators and closures](./official-doc-stuff/20_iterator_closure)
+21. [Cargo stuff](./official-doc-stuff/21_more_cargo_stuff)
+22. Smart Pointers
+22.1 [Smart Pointer and Box and Deref Trait](./official-doc-stuff/22_smart_pointer)
+22.2 [Drop Trait](./official-doc-stuff/22_smart_pointer_pt2)
+22.3 [Rc](./official-doc-stuff/22_smart_pointer_pt2)
+22.4 [RefCell](./official-doc-stuff/22_smart_pointer_pt2)
+22.5 [Memory Leaks](./official-doc-stuff/22_smart_pointer_pt2)
+23. Concurrency
+23.1 [Threads](./official-doc-stuff/23_concurrency)
+23.2 [Message Passing](./official-doc-stuff/23_concurrency_pt2)
+23.3 [Shared State](./official-doc-stuff/23_concurrency_pt3)
+23.4 [Extensible Concurrency](./official-doc-stuff/23_concurrency_pt4)
