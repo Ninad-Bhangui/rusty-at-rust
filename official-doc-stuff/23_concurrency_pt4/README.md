@@ -32,3 +32,25 @@ is `Send` automatically because all it's types are `Send`.
 - Types made up of `Send` and `Sync` are thread safe by default.
 - No implementation for either is needed.
 - Implementing these requires unsafe rust code
+
+## Extras
+
+The tutorial asked us to do two things if we were interested. Look into atomic operations and try implementing deadlocks.
+
+### Deadlock implementation
+
+```rust
+use std::sync::Mutex;
+use std::time::Duration;
+fn main() {
+    let data = Mutex::new(0);
+    let d1 = data.lock();
+    println!("Locked using d1");
+    let d2 = data.lock().expect("Failed to lock"); // cannot lock, since d1 is still active. Creates deadlock
+    println!("Locked using d2");
+}
+```
+
+- Above was a simple implementation of a deadlock I could come up with.
+- Best strategy is to prevent deadlock itself.
+- Mitigating deadlocks can be achieved through timeouts.
