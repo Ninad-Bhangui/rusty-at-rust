@@ -131,3 +131,18 @@ fn main() {
      2. There are no generic type parameters
 
 I do not understand the reason right now. But it can be found [here](https://doc.rust-lang.org/book/ch17-02-trait-objects.html#object-safety-is-required-for-trait-objects). Will update after I understand
+
+## Implementing an Object-Oriented Design Pattern
+
+- *State Pattern* is an object oriented design pattern.
+- Value has an internal state and behaviour changes based on that state.
+- State is responsible for it's own behaviour.
+- value holding a state object knows nothing about behaviour.
+
+Example , Implementing blog post workflow with following functionality:
+
+- Blog post starts as empty draft.
+- When draft is done, review is requested.
+- After approval, gets published.
+- Only published posts return content to print. Unapproved posts cannot be accidentally published.
+
