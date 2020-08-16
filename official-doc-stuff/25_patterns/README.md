@@ -1,4 +1,4 @@
-# Object Oriented Programming in rust
+# Patterns
 
 ## Links from docs covered here
 
