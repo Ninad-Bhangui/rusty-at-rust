@@ -14,8 +14,6 @@ Install the latest stable version of Rust using rustup
   ```bash
   curl --proto '=https' --tlsv1.2 <https://sh.rustup.rs> -sSf | sh
   ```
-  
-Dillinger uses a number of open source projects to work properly:
 
 ### Basic Code
 
