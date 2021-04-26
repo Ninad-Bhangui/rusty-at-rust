@@ -42,7 +42,13 @@ const MAX_POINTS: u32 = 100_000;
 
 - Naming convention for constant : uppercase with underscores
 - underscores can be added in numeric literals for readability.
-
+- Constants can only be set to a constant expression. Not a result of a function call. Determined at compile time not runtime.
+- Example :
+```rust
+let a = 10;
+CONST B = a/2
+```
+Above will throw an error `attempt to use a non-constant value in a constant`
 - Valid for entire scope
 
 #### Shadowing
