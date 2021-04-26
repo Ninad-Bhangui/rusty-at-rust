@@ -175,7 +175,7 @@ let first = a[0];
 let second = a[1];
 ```
 
-- Accessing invalid index runs but panics with *runtime* error and exits
+- ~~TAccessing invalid index runs but panics with *runtime* error and exits~~. New Version of compiler avoids invalid index as well
 
 ```rust
 thread 'main' panicked at 'index out of bounds: the len is 5 but the index is 10', src/main.rs:5:19
